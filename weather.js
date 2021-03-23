@@ -1,8 +1,8 @@
 /*******************************************************/
 //SELECT ELEMENTS
 const iconElement = document.querySelector(".weather-icon");
-const tempElement = document.querySelector(".tempurature-value p")[0];
-const descElement = document.querySelector(".tempurature-description p");
+const tempElement = document.querySelector(".temperature-value p");
+const descElement = document.querySelector(".temperature-description p");
 const locationElement = document.querySelector(".location p");
 const notificationElement = document.querySelector(".notification");
 
@@ -77,7 +77,7 @@ function getWeather(latitude, longitude){
 function displayWeather(){
     iconElement.innerHTML = `<img src="icons/${weather.iconId }.png"/>`;
     tempElement.innerHTML = `${weather.temperature.value} ˚ <span>C</span>`;
-    descElement.innerHTML = weather.description;
+    descElement.innerHTML = `${weather.description}`;
     locationElement.innerHTML = `${weather.city}, ${weather.country}`;
 }
 /*******************************************************/
