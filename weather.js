@@ -10,7 +10,7 @@ const notificationElement = document.querySelector(".notification");
 const weather = {};
 
 weather.temperature = {
-    unit : "celcius"
+    unit : "Fahrenheit"
 }
 
 //APP CONTENTS AND VARS
@@ -77,15 +77,15 @@ function getWeather(latitude, longitude){
 
 function displayWeather(){
     iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
-    tempElement.innerHTML = `${weather.temperature.value} ˚ <span>C</span>`;
+    tempElement.innerHTML = `${weather.temperature.value}˚ <span>C</span>`;
     descElement.innerHTML = `${weather.description}`;
     locationElement.innerHTML = `${weather.city}, ${weather.country}`;
 }
 /*******************************************************/
 
 // a function to convert C to F, which is (temp * 9/5) + 32
-function celciusToFahrenheit( temperature ){
-    return ( temperature * 9/5) + 32;
+function celsiusToFahrenheit( temperature ){
+    return (temperature * 9/5) + 32;
 }
 tempElement.addEventListener("click", function(){
 //create a function that will convert temp from C to F on click
@@ -96,16 +96,16 @@ tempElement.addEventListener("click", function(){
         let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
 //it is calling the function that does the math to convert the value
         fahrenheit = Math.floor(fahrenheit);
-//then, we are taking that value and insuring it is an integer, roundind down to provide value
+//then, we are taking that value and ensuring it is an integer, rounding down to provide value
         tempElement.innerHTML = `${fahrenheit}˚ <span>F</span>`
-
+//then we are inserting the value into the card with F for fahrenheit
         weather.temperature.unit = "fahrenheit";
     }else{
         tempElement.innerHTML = `${weather.temperature.value}˚ <span>C</span>`;
-
-        weather.temperature.unit = "celcius";
+//this will change the value to celsius if it is in fahrenheit
+        weather.temperature.unit = "celsius";
     }
-})
+});
 
 
 
